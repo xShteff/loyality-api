@@ -5,12 +5,13 @@ metadata:
   description: Loyality API
   healthCheckURL: http://petstore.swagger.io/v1/pets
   tags:
+    - store
     - rest
    
 spec:
   type: openapi
   lifecycle: experimental 
-  owner: team-c
+  owner: team-b
   definition: |
     openapi: 3.0.0
     info:
