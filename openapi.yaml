@@ -71,6 +71,11 @@ spec:
               description: receipt added successfully
           x-codegen-request-body-name: body
     components:
+      securitySchemes:
+        bearerAuth:            # arbitrary name for the security scheme
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
       schemas:
         Email:
           type: string
@@ -110,4 +115,6 @@ spec:
             email: email@email.com
             receiptId: '112'
             paid: 1320
+    security:
+      - bearerAuth: [] 
     tags: []
