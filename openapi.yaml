@@ -72,10 +72,20 @@ spec:
           x-codegen-request-body-name: body
     components:
       securitySchemes:
-        bearerAuth:            # arbitrary name for the security scheme
-          type: http
-          scheme: bearer
-          bearerFormat: JWT
+        oauth:            # arbitrary name for the security scheme
+          type: oauth2
+          description: This API uses OAuth 2 with the implicit grant flow
+          flow:
+            authorizationUrl:
+              auhtorizationUrl: https://api.example/oauth2/authorize
+              tokenUrl: https://api.example.com/oauth2/token
+              scopes:
+                read_loyality: read your loyality
+                write_loyality: modify loyality in your account
+    security:
+      oauth:
+      - [read_loyality, write_loyality]
+
       schemas:
         Email:
           type: string
@@ -115,6 +125,4 @@ spec:
             email: email@email.com
             receiptId: '112'
             paid: 1320
-    security:
-      - bearerAuth: [] 
     tags: []
